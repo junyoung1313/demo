@@ -1,9 +1,21 @@
-package com.example.demo.DTO;
+package com.example.demo.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * User
  */
+
+ @Entity
 public class User {
+
+    @Id @GeneratedValue
+    private Long id;
+
+    @Column(nullable = false, length = 20)
     private String userId;
     private String password;
     private String name;
@@ -82,6 +94,15 @@ public class User {
             ", email='" + getEmail() + "'" +
             "}";
     }
+
+	public void update(User newUser) {
+        this.userId=newUser.getUserId();
+        this.password=newUser.getPassword();
+        this.name=newUser.getName();
+        this.email=newUser.getEmail();
+	}
+
+	
 
     
 }
